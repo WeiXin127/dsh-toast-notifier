@@ -4,6 +4,8 @@
 
 一个独立于 DSH 主窗口的原生浮动通知窗，类似 QQ 消息弹窗：始终置顶、跨屏显示、可拖动、位置记忆。它用 Windows PowerShell + WPF 创建真正的原生窗口，因此能盖在所有应用窗口之上，不受 DSH 对话窗口边界裁剪。
 
+> 仓库地址：<https://github.com/WeiXin127/dsh-toast-notifier> · 仅支持 Windows
+
 ## 功能
 
 四类事件触发提醒：
@@ -160,16 +162,26 @@ ctx.on('user-questions/request', (req, next) => { showToast('question', ...); re
 
 ## 安装
 
-### 方式一：从 GitHub 仓库引用（推荐分享给别人）
-
-把仓库克隆到本地，然后让 profile 依赖指向 **克隆下来的目录**（不要指向 `node_modules`，插件需要能读到同目录的 `toast.ps1`）：
+### 方式一：git clone（推荐，便于日后更新）
 
 ```powershell
 mkdir C:\dsh-plugins -Force
-git clone https://github.com/<你的用户名>/dsh-toast-notifier.git C:\dsh-plugins\dsh-toast-notifier
+git clone https://github.com/WeiXin127/dsh-toast-notifier.git C:\dsh-plugins\dsh-toast-notifier
 ```
 
-然后编辑 profile 的 `package.json`（`%USERPROFILE%\.dsh\profiles\desktop\package.json`）：
+### 方式二：直接下载 ZIP
+
+在仓库页点 **Code → Download ZIP**，或直接下载：
+
+```
+https://github.com/WeiXin127/dsh-toast-notifier/archive/refs/heads/main.zip
+```
+
+解压到例如 `C:\dsh-plugins\`，得到的目录里应该**直接**能看到 `package.json`、`toast.ps1`、`lib\` 等文件（如果多套了一层 `dsh-toast-notifier-main\`，请把里层目录内容整体上移，或直接把路径指向里层目录）。
+
+### 配置 profile
+
+克隆/ZIP 解压完成后，编辑 profile 的 `package.json`（`%USERPROFILE%\.dsh\profiles\desktop\package.json`），把依赖指向**解压或克隆出来的目录**（不要指向 `node_modules`，插件需要能读到同目录的 `toast.ps1`）：
 
 ```json
 {
@@ -189,15 +201,9 @@ git clone https://github.com/<你的用户名>/dsh-toast-notifier.git C:\dsh-plu
 }
 ```
 
-### 方式二：从本地目录安装
+> 路径写法：JSON 里用正斜杠 `/`（`file:C:/dsh-plugins/dsh-toast-notifier`），反斜杠需要转义成 `\\`。
 
-```json
-"dependencies": {
-  "dsh-toast-notifier": "file:D:/Harness-one/dsh-toast-notifier"
-}
-```
-
-### 之后（两种方式相同）
+### 之后
 
 1. `bundles` 里 `"dsh-toast-notifier"` 必须放在 `"@deepseek-ai/dsh-web-app"` **之前**（见「实现要点」第 5 条）。
 2. 在 profile 目录运行 `pnpm install`（若报「minimumReleaseAge」策略拦截，可加 `--config.minimumReleaseAge=0` 放行）。

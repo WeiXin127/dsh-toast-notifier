@@ -6,6 +6,14 @@
   "main": "lib/index.js",
   "types": "lib/index.js",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WeiXin127/dsh-toast-notifier.git"
+  },
+  "homepage": "https://github.com/WeiXin127/dsh-toast-notifier#readme",
+  "bugs": {
+    "url": "https://github.com/WeiXin127/dsh-toast-notifier/issues"
+  },
   "keywords": [
     "deepseek",
     "harness",
