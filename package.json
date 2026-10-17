@@ -1,0 +1,41 @@
+{
+  "name": "dsh-toast-notifier",
+  "version": "1.0.0",
+  "description": "权限请求与任务完成的系统级置顶浮窗提醒（QQ 消息弹窗风格）",
+  "type": "module",
+  "main": "lib/index.js",
+  "types": "lib/index.js",
+  "license": "MIT",
+  "keywords": [
+    "deepseek",
+    "harness",
+    "dsh",
+    "dsh-plugin",
+    "toast",
+    "notification",
+    "approval",
+    "permission",
+    "always-on-top"
+  ],
+  "peerDependencies": {
+    "@deepseek-ai/cordis": "^4.0.1"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "exports": {
+    ".": {
+      "default": "./lib/index.js"
+    },
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib",
+    "toast.ps1",
+    "cordis.patch.yml",
+    "README.md"
+  ]
+}

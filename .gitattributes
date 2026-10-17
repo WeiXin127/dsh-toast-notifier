@@ -1,0 +1,7 @@
+# Normalize text files to LF in the repository.
+* text=auto eol=lf
+
+# Preserve toast.ps1 byte-for-byte: the script is written with ASCII-only
+# literals and LF endings so Windows PowerShell 5.1 reads it correctly.
+# Converting it to CRLF/BOM on checkout is unnecessary and risks encoding damage.
+*.ps1 -text

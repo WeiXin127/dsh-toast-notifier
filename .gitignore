@@ -1,0 +1,25 @@
+# dependencies
+node_modules/
+.pnpm-store/
+
+# logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# editor / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# build / temp
+dist/
+tmp/
+*.tmp
+.tmp*/
+
+# local data files (runtime data lives in ~/.dsh/dsh-toast-notifier)
+content-*.json
+position.json
